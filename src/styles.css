@@ -59,3 +59,13 @@ body {
   justify-content: flex-end;
   padding: 20px 20px 20px 10px;
 }
+
+.Item-num {
+  width: 100%;
+  padding: 20px 10px;
+}
+
+.Item-null {
+  width: 100%;
+  padding: 20px 10px;
+}
