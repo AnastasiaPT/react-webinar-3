@@ -50,7 +50,8 @@ body {
 }
 
 .Item-title {
-  width: 100%;
+  max-width: fit-content;
+  min-width: fit-content;
   padding: 20px 10px;
 }
 
@@ -63,6 +64,7 @@ body {
 .Item-num {
   width: 100%;
   padding: 20px 10px;
+  justify-items: left;
 }
 
 .Item-null {

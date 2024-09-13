@@ -26,3 +26,21 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+export function WordEndings(num) {
+  var  lastNumber = num - Math.trunc(num/10)*10;
+  let MWord = ' раз '
+  if ( num==12 || num==13 || num == 14 ) {
+    return MWord;
+  }
+  if ( num == 2 || num == 3 || num == 4 ) {
+    MWord = ' раза '
+    return MWord;
+  }
+  if (lastNumber == 2 || lastNumber == 3 || lastNumber == 4) {
+      MWord = ' раза ';
+      return MWord;
+  }
+
+  return MWord;
+}

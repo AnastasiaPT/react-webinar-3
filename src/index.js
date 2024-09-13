@@ -14,7 +14,6 @@ const store = new Store({
     { code: 6, title: 'Шестая запись', num: 0  },
     { code: 7, title: 'Седьмая запись', num: 0  },
   ],
-  rq_c: 7,
 });
 
 const root = createRoot(document.getElementById('root'));

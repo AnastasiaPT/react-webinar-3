@@ -42,10 +42,10 @@ class Store {
    * Добавление новой записи
    */
   addItem() {
-    this.state.rq_c++;
+    const rq_c = Math.trunc(( Date.now() - Math.random()*10.e+10 ) % 1000);
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: this.state.rq_c, title: 'Новая запись', num: 0 }],
+      list: [...this.state.list, { code: rq_c, title: 'Новая запись', num: 0 }],
     });
   }
 
@@ -69,10 +69,10 @@ class Store {
       ...this.state,
       list: this.state.list.map(item => {
         if (item.code === code) {
-          item.selected = !item.selected;
-          item.num++;
+          if(!item.selected) {item.num++;};
+          item.selected = !item.selected;          
         }else {
-          item.selected = false
+          item.selected = false;
         }
         return item;
       }),

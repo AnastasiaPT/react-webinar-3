@@ -1,5 +1,5 @@
 import React from 'react';
-import { createElement } from './utils.js';
+import { createElement, WordEndings } from './utils.js';
 import './styles.css';
 
 /**
@@ -30,7 +30,7 @@ function App({ store }) {
                 <div className="Item-title">{item.title}</div>
                 <div className="Item-num">
                    {item.num 
-                     ? <>{'Выделили '  + item.num + ' раз' }</>
+                     ? <>{'| Выделили '  + item.num + WordEndings(item.num) }</>
                      : <></>
                    }
                 </div>
