@@ -33,6 +33,10 @@ export function WordEndings(num) {
   if ( num==12 || num==13 || num == 14 ) {
     return MWord;
   }
+  var  lastNumber2 = num - Math.trunc(num/100)*100;
+  if ( lastNumber2==12 || lastNumber2==13 || lastNumber2 == 14 ) {
+    return MWord;
+  }
   if ( num == 2 || num == 3 || num == 4 ) {
     MWord = ' раза '
     return MWord;
