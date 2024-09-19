@@ -1,0 +1,32 @@
+.ItemB {
+    display: flex;
+    justify-content: flex-start;
+    transition: background-color 1s;
+  }
+  
+  .ItemB-code {
+    padding: 20px 10px 20px 20px;
+    font-size: 16px;
+  }
+  
+  .ItemB-title {
+    padding: 20px 10px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .ItemB-actions {
+    padding: 20px 21px 22px 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .ItemB-actions button {
+    font-size: 13px;
+  }
+  
+  .ItemB-amount{
+    padding: 20px 20px 20px 10px;
+    font-size: 18px;
+    color: #404040;
+  }

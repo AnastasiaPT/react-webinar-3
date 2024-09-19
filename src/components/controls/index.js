@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
+import Basket from '../basket';
 
-function Controls({ onAdd }) {
+function Controls({ onAdd = () => { }, sum, amount }) {
   return (
     <div className="Controls">
-      <button onClick={() => onAdd()}>Добавить</button>
-    </div>
+    <Basket sum={sum} amount={amount} />
+    <button className='Controls-button' onClick={() => onAdd()}>Перейти</button>
+  </div>
   );
 }
 
@@ -14,8 +16,5 @@ Controls.propTypes = {
   onAdd: PropTypes.func,
 };
 
-Controls.defaultProps = {
-  onAdd: () => {},
-};
 
 export default React.memo(Controls);

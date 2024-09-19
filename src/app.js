@@ -1,8 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState }  from 'react';
 import List from './components/list';
+import ListBasket from './components/list-basket';
 import Controls from './components/controls';
 import Head from './components/head';
 import PageLayout from './components/page-layout';
+import ModalLayout from './components/modal';
 
 /**
  * Приложение
@@ -10,38 +12,45 @@ import PageLayout from './components/page-layout';
  * @returns {React.ReactElement}
  */
 function App({ store }) {
+
   const list = store.getState().list;
+  const items = store.getState().basket;
+  const state = store.getState();
+
+  const [ModalOn, setModal] = useState(false);
 
   const callbacks = {
-    onDeleteItem: useCallback(
-      code => {
-        store.deleteItem(code);
-      },
-      [store],
-    ),
+    
+    ModalOn: useCallback(() => {
+      setModal(true)
+    }, [setModal]),
 
-    onSelectItem: useCallback(
-      code => {
-        store.selectItem(code);
-      },
-      [store],
-    ),
+    ModalOff: useCallback(() => {
+      setModal(false)
+    }, [setModal]),
 
-    onAddItem: useCallback(() => {
-      store.addItem();
+    addItem: useCallback((item) => {
+      store.addItemBasket(item)
     }, [store]),
+
+    deleteItem: useCallback((item) => {
+      store.deleteItemBasket(item)
+    }, [store]),
+
   };
 
   return (
-    <PageLayout>
-      <Head title="Приложение на чистом JS" />
-      <Controls onAdd={callbacks.onAddItem} />
-      <List
-        list={list}
-        onDeleteItem={callbacks.onDeleteItem}
-        onSelectItem={callbacks.onSelectItem}
-      />
-    </PageLayout>
+    <>
+      <PageLayout>
+        <Head title="Магазин" />
+        <Controls onAdd={callbacks.ModalOn} sum={store.getBasketCost()} amount={store.getBasketLen()} />
+        <List list={list} onAddItemBasket={callbacks.addItem} />
+       {ModalOn &&
+        <ModalLayout onClose={callbacks.ModalOff} sum={store.getBasketCost()}>
+          <ListBasket list={items} onDeleteItemBasket={callbacks.deleteItem} />
+        </ModalLayout>}
+      </PageLayout>
+    </>
   );
 }
 
