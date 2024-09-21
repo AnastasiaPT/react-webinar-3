@@ -1,6 +1,5 @@
 import React, { useCallback, useState }  from 'react';
 import List from './components/list';
-import ListBasket from './components/list-basket';
 import Controls from './components/controls';
 import ControlsBasket from './components/controls-basket';
 import ItogBasket from './components/itog-basket';
@@ -48,11 +47,11 @@ function App({ store }) {
       <PageLayout>
         <Head title="Магазин" />
         <Controls onAdd={callbacks.ModalOn} sum={sum} amount={lengthBasket}/>
-        <List list={list} onAddItemBasket={callbacks.addItem} />
+        <List type = {true} list={list} onAddItemBasket={callbacks.addItem} />
        {ModalOn &&
         <ModalLayout >
           <ControlsBasket onClose={callbacks.ModalOff} />
-          <ListBasket list={items} onDeleteItemBasket={callbacks.deleteItem} />
+          <List type = {false} list={items} onDeleteItemBasket={callbacks.deleteItem} />
           <ItogBasket sum={sum}/>
         </ModalLayout>}
       </PageLayout>

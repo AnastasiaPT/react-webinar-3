@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Item from '../item';
-import ItemBasket from '../item';
+import ItemBasket from '../item-basket';
 import './style.css';
 
-function List({ list,  onAddItemBasket }) {
+function List({ type = true, list,  onAddItemBasket, onDeleteItemBasket}) {
 
    return list.map(item => (
         <div key={item.code} className="List-item">
-          <Item item={item} onAddItemBasket={onAddItemBasket} />
+         {type && <Item item={item} onAddItemBasket={onAddItemBasket} />}
+         {!type && <ItemBasket item={item} onDeleteItemBasket={onDeleteItemBasket} />}
         </div>
       ))
    
