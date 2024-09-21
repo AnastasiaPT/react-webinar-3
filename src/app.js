@@ -2,6 +2,8 @@ import React, { useCallback, useState }  from 'react';
 import List from './components/list';
 import ListBasket from './components/list-basket';
 import Controls from './components/controls';
+import ControlsBasket from './components/controls-basket';
+import ItogBasket from './components/itog-basket';
 import Head from './components/head';
 import PageLayout from './components/page-layout';
 import ModalLayout from './components/modal';
@@ -16,6 +18,8 @@ function App({ store }) {
   const list = store.getState().list;
   const items = store.getState().basket;
   const state = store.getState();
+  const sum = store.getState().itog;
+  const lengthBasket = store.getState().lenBasket;
 
   const [ModalOn, setModal] = useState(false);
 
@@ -43,11 +47,13 @@ function App({ store }) {
     <>
       <PageLayout>
         <Head title="Магазин" />
-        <Controls onAdd={callbacks.ModalOn} sum={store.getBasketCost()} amount={store.getBasketLen()} />
+        <Controls onAdd={callbacks.ModalOn} sum={sum} amount={lengthBasket}/>
         <List list={list} onAddItemBasket={callbacks.addItem} />
        {ModalOn &&
-        <ModalLayout onClose={callbacks.ModalOff} sum={store.getBasketCost()}>
+        <ModalLayout >
+          <ControlsBasket onClose={callbacks.ModalOff} />
           <ListBasket list={items} onDeleteItemBasket={callbacks.deleteItem} />
+          <ItogBasket sum={sum}/>
         </ModalLayout>}
       </PageLayout>
     </>

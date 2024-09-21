@@ -14,6 +14,8 @@ function ItemBasket(props) {
    return (
     <div className={'ItemBasket'} >
        <div className="ItemB-title">{props.item.title}</div>
+       <div className="ItemB-code">{}</div>
+       <div className="ItemB-price">{new Intl.NumberFormat('ru-RU').format(props.item.price)}&nbsp;₽ </div>
        <div className="ItemB-amount">{new Intl.NumberFormat('ru-RU').format(props.item.amount)}&nbsp;шт</div>
       <div className="ItemB-actions">
         <button onClick={callbacks.onDelItem}>Удалить</button>
@@ -27,6 +29,7 @@ ItemBasket.propTypes = {
     code: PropTypes.number,
     title: PropTypes.string,
     amount: PropTypes.number,
+    price: PropTypes.number,
   }).isRequired,
 };
 

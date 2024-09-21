@@ -1,0 +1,8 @@
+.itogb {
+    display: flex;
+    justify-content: flex-end;
+    gap: 53px;
+    padding: 0 120px 89px 0;
+    font-weight: 700;
+    font-size: 18px;
+  }
